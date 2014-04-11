@@ -11,9 +11,10 @@
 	sudo pip install django
 
 	cd /simpler
+	python manage.py syncdb
 	python manage.py runserver
 
 ```
-
+- `python manage.py syncdb` will create / sync a local database for development
 - `python manage.py runserver` will run the development server
 - `/simpler` is the actual python project directory
