@@ -1,0 +1,9 @@
+{% if dict1 %}
+    <ul>
+    {% for location,patients in dict1.items %}
+        <li>{{ patients }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Patients For You</p>
+{% endif %}
