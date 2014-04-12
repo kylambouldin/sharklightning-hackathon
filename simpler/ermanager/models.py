@@ -3,10 +3,12 @@ import datetime
 
 # Create your models here.
 class Location(models.Model):
+
     # Str nameornumber
     number = models.IntegerField()
+
     def __unicode__(self):
-      return self.number
+      return str(self.number)
 
 class Paitent(models.Model):
     # Paitent first name
