@@ -45,3 +45,11 @@ def big_board(request):
           'dict1':dict1,
     })
     return HttpResponse(template.render(context))
+
+def patient_report(request, patient_id):
+ try:
+    patient = Patient.objects.get(id=patient_id)
+ except Patient.DoesNotExist:
+    raise Http404
+ return render(request, 'ermanager/patient_report.html', {'patient':patient}) 
+	
