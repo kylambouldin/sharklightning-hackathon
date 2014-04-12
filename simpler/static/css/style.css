@@ -94,3 +94,11 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+.welcome {
+  background: #BB0000;
+  color: #fff;
+  margin: 0 0 2.5em;
+  padding-top: 2em;
+}
+
