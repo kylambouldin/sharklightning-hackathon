@@ -19,6 +19,15 @@ def doctor_page(request):
   return HttpResponse(template.render(context))
 
 @login_required(login_url='/auth/login/')
+def nurse_page(request):
+  patient_list = Patient.objects.order_by('-last_name')
+  template= loader.get_template('ermanager/nurse_page.html')
+  context = RequestContext(request, {
+      'patient_list':patient_list,
+    })
+  return HttpResponse(template.render(context))
+
+@login_required(login_url='/auth/login/')
 def patient_edit(request,patient_id):
   try:
     patient = Patient.objects.get(id=patient_id)
@@ -59,6 +68,16 @@ def submit_edit(request):
 
 @login_required(login_url='/auth/login/')
 def patient_mod(request,patient_id):
+  try:
+    patient = Patient.objects.get(id=patient_id)
+    form = PatientForm(initial={'last_name':patient.last_name,'first_name':patient.first_name,'needs_review':patient.needs_review,'is_waiting':patient.is_waiting ,'loc':patient.loc, 'last_moved':patient.last_moved ,'last_checkup': patient.last_checkup ,'priority': patient.priority ,'nurse_notes': patient.nurse_notes , 'doctor_notes':patient.doctor_notes})
+  except Patient.DoesNotExist:
+    raise Http404
+  request.session['patient_id'] = patient_id
+  return render(request, 'ermanager/patient_nurse_mod.html', {'patient':patient,'form':form})
+
+@login_required(login_url='/auth/login/')
+def patient_nurse_mod(request,patient_id):
   try:
     patient = Patient.objects.get(id=patient_id)
     form = PatientForm(initial={'last_name':patient.last_name,'first_name':patient.first_name,'needs_review':patient.needs_review,'is_waiting':patient.is_waiting ,'loc':patient.loc, 'last_moved':patient.last_moved ,'last_checkup': patient.last_checkup ,'priority': patient.priority ,'nurse_notes': patient.nurse_notes , 'doctor_notes':patient.doctor_notes})

@@ -4,12 +4,13 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib.auth import authenticate, login
 
 @login_required(login_url='auth/login/')
 def home(request):
     return render(request, 'simpler/home.html')
 
-def login(request):
+def loginpage(request):
     return render(request, 'login.html')
 
 def loggedin(request):
@@ -17,15 +18,10 @@ def loggedin(request):
     password = request.POST['password']
     user = authenticate(username=user, password=password)
     if user is not None:
+      login(request,user)
       return render(request,'simpler/home.html')
-      #if user.is_active:
-      #  print("User is valid, active and authenticated")
-      #else:
-      #  print("The password is valid, but the account has been disabled!")
     else:
       return render(request,'login.html')
-      # the authentication system was unable to verify the username and password
-      #print("The username and password were incorrect.")
 
 def logout_view(request):
     logout(request)

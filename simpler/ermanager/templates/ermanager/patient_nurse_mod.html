@@ -1,0 +1,13 @@
+<body>
+<form action="/ermanager/submit_edit/" method="POST">{% csrf_token %}
+        {% for field in form %}
+        <input type="hidden" name="patient_id" value="{{patient_id}}"/>
+        <div class="fieldWrapper">
+            <tr>
+              <input name="{{ field.label_tag }}" value="{{field.value}}"/>
+            </tr>
+        </div>
+        {% endfor %}
+        <input type="submit" value="Submit"/>
+</form>
+</body>
