@@ -10,8 +10,8 @@ class Location(models.Model):
     def __unicode__(self):
       return str(self.number)
 
-class Paitent(models.Model):
-    # Paitent first name
+class Patient(models.Model):
+    # Patient first name
     first_name = models.CharField(max_length=250)
 
     # Paitent last name

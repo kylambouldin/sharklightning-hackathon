@@ -10,5 +10,7 @@ urlpatterns = patterns('',
 
     url(r'^doctor_page/$',views.doctor_page, name='doctor_page'),
 
-    url(r'^paitent/(?P<paitent_id>\d+)/$',views.paitent_edit,name='paitent'),
+    url(r'^patient/(?P<patient_id>\d+)/$',views.patient_edit,name='patient_edit'),
+
+    url(r'^patient_mod/(?P<patient_id>\d+)/$',views.patient_mod,name='patient_mod')
     )
