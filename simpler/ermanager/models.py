@@ -5,7 +5,9 @@ import datetime
 class Location(models.Model):
     # Str nameornumber
     name = models.CharField(max_length=50)
-    
+    def __unicode__(self):
+      return self.name
+
 class Paitent(models.Model):
     #bool needsReview
     needs_review = models.BooleanField()
