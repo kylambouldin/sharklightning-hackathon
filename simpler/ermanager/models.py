@@ -4,9 +4,9 @@ import datetime
 # Create your models here.
 class Location(models.Model):
     # Str nameornumber
-    name = models.CharField(max_length=50)
+    number = models.IntegerField()
     def __unicode__(self):
-      return self.name
+      return self.number
 
 class Paitent(models.Model):
     # Paitent first name
@@ -17,6 +17,9 @@ class Paitent(models.Model):
 
     #bool needsReview
     needs_review = models.BooleanField()
+
+    #bool isWaiting
+    is_waiting = models.BooleanField()
 
     # Location loc
     loc = models.ForeignKey(Location)
