@@ -20,3 +20,16 @@ class Paitent(models.Model):
 
     # Datetime LastCheckup
     last_checkup = models.DateTimeField('last checkup')
+
+    PRIORITY_CHOICES = (
+            ('CR', 'Critical'),
+            ('HI', 'High'),
+            ('MED', 'Medium'),
+            ('LOW', 'Low'),
+    )
+
+    priority = models.CharField(max_length=3, choices=PRIORITY_CHOICES)
+
+    nurse_notes = models.TextField()
+
+    doctor_notes = models.TextField()
