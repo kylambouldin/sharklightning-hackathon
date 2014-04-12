@@ -1,4 +1,32 @@
-<h1>{{ patient.last_name }}</h1>
+{% extends "base.html" %}
 
-<h1>{{ patient.first_name }}</h1>
-<a href="/ermanager/patient_mod/{{ patient.id }}/"> edit </a>
+{% block title %}
+{{ patient.last_name }}, {{ patient.first_name }}
+{% endblock %}
+
+{% block content %}
+<ul>
+	<li>Current Location: {{ patient.loc }}</li>
+	<li>Last Moved: {{ patient.last_moved }}</li>
+	<li>Last Checkup: {{ patient.last_checkup }}</li>
+	<li>Current Priority: {{ patient.priority }}</li>
+</ul>
+<hr>
+{% if patient.nurse_notes %}
+<h3>Nurse Notes</h3>
+<p>{{ patient.nurse_notes }}</p>
+{% else %}
+<p>Currently no nurse notes</p>
+{% endif %}
+<hr>
+
+{% if patient.doctor_notes %}
+<h3>Doctor Notes</h3>
+<p>{{ patient.doctor_notes }}</p>
+{% else %}
+<p>Currently no doctor notes</p>
+
+{% endif %}
+<hr>
+<h4><a href="/ermanager/patient_mod/{{ patient.id }}/"> edit </a></h4>
+{% endblock %}
