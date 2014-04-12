@@ -29,12 +29,12 @@
     </head>
 
     <body>
-        <img id="logo" src="{% static 'images/simpler_logo.png' %}">
+        <img id="logo" src="{% static 'images/simpler_logo_black.png' %}">
         <div class="container">
 
             <form class="form-signin" role="form"action="/auth/logging_in/" method="POST">{% csrf_token %}
                 <!--        <h2 class="form-signin-heading">Login</h2>-->
-                <input type="email" name="email" class="form-control-e" placeholder="Email address" required autofocus>
+                <input type="email" name="email" class="form-control-e" placeholder="Email address" required autofocus><br/>
                 <input type="password" name="password" class="form-control-p" placeholder="Password" required><br/>
                 <label class="checkbox">
                     <input type="checkbox" value="remember-me"> Remember me
