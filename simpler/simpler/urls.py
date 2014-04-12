@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 
     url(r'^auth/logging_in/$',simpler.views.loggedin),
 
-    url(r'^ermanager/', include('ermanager.urls')),
+    url(r'^ermanager/', include('ermanager.urls', namespace="ermanager")),
 
     url(r'^admin/', include(admin.site.urls)),
 )

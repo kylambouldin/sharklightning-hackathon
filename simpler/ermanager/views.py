@@ -115,8 +115,8 @@ class PatientForm(forms.Form):
   last_moved = forms.DateTimeField()
   last_checkup = forms.DateTimeField()
   priority = forms.CharField(max_length=3)
-  nurse_notes = forms.CharField()
-  doctor_notes = forms.CharField()
+  nurse_notes = forms.CharField(required=False)
+  doctor_notes = forms.CharField(required=False)
 
 @login_required(login_url='/auth/login/')
 def patient_report(request, patient_id):
