@@ -8,4 +8,7 @@ urlpatterns = patterns('',
 
     url(r'^bigscreen/$', views.big_board, name='big_screen'),
 
-)
+    url(r'^doctor_page/$',views.doctor_page, name='doctor_page'),
+
+    url(r'^paitent/(?P<paitent_id>\d+)/$',views.paitent_edit,name='paitent'),
+    )
