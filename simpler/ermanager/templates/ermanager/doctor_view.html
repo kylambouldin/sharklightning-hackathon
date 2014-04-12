@@ -1,9 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Doctor's Page{% endblock %}
+
+{% block content %}
+
 {% if patient_list %}
     <ul>
-    {% for patient in patient_list %}
-        <li><a href="/ermanager/patient/{{ patient.id }}/">{{ patient.last_name }}</a></li>
-    {% endfor %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Needs Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patient_list %}
+                {% if patient.needs_review == True %}
+                <tr class="danger">
+                {% else %}
+                <tr>
+                {% endif %}
+                    <td><a href="/ermanager/patient/{{ patient.id }}/">{{ patient.last_name }}</a></td>
+                    <td><a href="/ermanager/patient/{{ patient.id }}/">{{ patient.first_name }}</a></td>
+                    <td>{{ patient.needs_review }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
     </ul>
 {% else %}
     <p>No Patients For You</p>
 {% endif %}
+
+{% endblock %}
