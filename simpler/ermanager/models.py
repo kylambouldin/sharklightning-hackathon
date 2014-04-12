@@ -9,6 +9,12 @@ class Location(models.Model):
       return self.name
 
 class Paitent(models.Model):
+    # Paitent first name
+    first_name = models.CharField(max_length=250)
+
+    # Paitent last name
+    last_name = models.CharField(max_length=250)
+
     #bool needsReview
     needs_review = models.BooleanField()
 
@@ -20,3 +26,5 @@ class Paitent(models.Model):
 
     # Datetime LastCheckup
     last_checkup = models.DateTimeField('last checkup')
+    def __unicode__(self):
+      return self.first_name+', '+self.last_name
