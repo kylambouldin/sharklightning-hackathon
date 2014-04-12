@@ -41,9 +41,9 @@ class Patient(models.Model):
 
     priority = models.CharField(max_length=3, choices=PRIORITY_CHOICES)
 
-    nurse_notes = models.TextField()
+    nurse_notes = models.TextField(null=True, blank=True)
 
-    doctor_notes = models.TextField()
+    doctor_notes = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
       return self.last_name+', '+self.first_name
