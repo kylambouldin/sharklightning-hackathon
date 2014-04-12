@@ -1,9 +1,9 @@
-{% if paitent_list %}
+{% if patient_list %}
     <ul>
-    {% for paitent in paitent_list %}
-        <li><a href="/ermanager/paitent/{{ paitent.id }}/">{{ paitent.last_name }}</a></li>
+    {% for patient in patient_list %}
+        <li><a href="/ermanager/patient/{{ patient.id }}/">{{ patient.last_name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No Paitents For You</p>
+    <p>No Patients For You</p>
 {% endif %}

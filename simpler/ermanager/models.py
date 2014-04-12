@@ -8,7 +8,7 @@ class Location(models.Model):
     number = models.IntegerField()
 
     def __unicode__(self):
-      return str(self.number)
+      return u'%d' %(self.number)
 
 class Patient(models.Model):
     # Patient first name
