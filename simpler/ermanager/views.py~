@@ -16,7 +16,7 @@ def big_board(request):
 
 
 
-	#dict1 contains the room number as the key, and the values fname,lname,and priority as a tuple 
+	print dict1
 	
 	return HttpResponse(dict1)
 	
