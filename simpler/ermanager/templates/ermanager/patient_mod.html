@@ -1,8 +1,14 @@
 <body>
-<form action="/ermanager/submit_edit/" method="post">{% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
+<form action="/ermanager/submit_edit/" method="POST">{% csrf_token %}
+        {% for field in form %}
+        <input type="hidden" name="patient_id" value="{{patient_id}}"/>
+        <div class="fieldWrapper">
+            <tr>
+              {{ field.errors }}
+              {{ field.label_tag }} {{ field }}
+            </tr>
+        </div>
+        {% endfor %}
         <input type="submit" value="Submit"/>
 </form>
 </body>
