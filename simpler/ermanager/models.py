@@ -41,4 +41,4 @@ class Paitent(models.Model):
     doctor_notes = models.TextField()
 
     def __unicode__(self):
-      return self.first_name+', '+self.last_name
+      return self.last_name+', '+self.first_name
