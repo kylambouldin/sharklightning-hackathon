@@ -15,4 +15,6 @@ urlpatterns = patterns('',
     url(r'^patient_mod/(?P<patient_id>\d+)/$',views.patient_mod,name='patient_mod'),
 
     url(r'^submit_edit/$',views.submit_edit, name='submit_patient'),
+    url(r'^patient_report/(?P<patient_id>\d+)/$',views.patient_report,name='patient_report'),
+
     )

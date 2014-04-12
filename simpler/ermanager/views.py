@@ -75,7 +75,6 @@ def big_board(request):
     return HttpResponse(template.render(context))
 
 
-
 #Form definition
 
 class PatientForm(forms.Form):
@@ -94,3 +93,10 @@ class PatientForm(forms.Form):
 #  priority = forms.CharField(max_length=3, choices=PRIORITY_CHOICES)
 #  nurse_notes = forms.TextField()
 #  doctor_notes = forms.TextField()
+
+def patient_report(request, patient_id):
+ try:
+    patient = Patient.objects.get(id=patient_id)
+ except Patient.DoesNotExist:
+    raise Http404
+ return render(request, 'ermanager/patient_report.html', {'patient':patient}) 
