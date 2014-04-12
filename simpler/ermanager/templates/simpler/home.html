@@ -9,10 +9,10 @@
 	</div>
 </div>
 
-<a href="{% url 'ermanager:big_screen' %}">	<h2>See everything on the Big Screen</h2></a><br/>
-
-	<p>Insert stuff / images </p>
+<a href="{% url 'ermanager:big_screen' %}">	<h2>ER Board</h2></a>
 <hr>
-<a href="{% url 'ermanager:doctor_page' %}"><h2>Doctors see it all</h2></a>
-	<p>Insert stuff / images </p>
+<a href="{% url 'ermanager:doctor_page' %}"><h2>List of Patients</h2></a>
+	<hr>
+	
+	<a href="{% url 'ermanager:patient_report' 1 %}"><h2>Sample Patient Report</h2></a>
 {% endblock %}
