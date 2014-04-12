@@ -7,7 +7,9 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 
 from ermanager.models import Patient
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/auth/login/')
 def doctor_page(request):
   patient_list = Patient.objects.order_by('-last_name')
   template= loader.get_template('ermanager/doctor_view.html')
@@ -16,6 +18,7 @@ def doctor_page(request):
     })
   return HttpResponse(template.render(context))
 
+@login_required(login_url='/auth/login/')
 def patient_edit(request,patient_id):
   try:
     patient = Patient.objects.get(id=patient_id)
@@ -24,7 +27,7 @@ def patient_edit(request,patient_id):
   return render(request, 'ermanager/patient_edit.html', {'patient':patient})
 
 # Create your views here.
-
+@login_required(login_url='/auth/login/')
 def submit_edit(request):
   if request.method == 'POST':
     form = PatientForm(request.POST)
@@ -54,6 +57,7 @@ def submit_edit(request):
     })
   return HttpResponse(template.render(context))
 
+@login_required(login_url='/auth/login/')
 def patient_mod(request,patient_id):
   try:
     patient = Patient.objects.get(id=patient_id)
@@ -63,6 +67,7 @@ def patient_mod(request,patient_id):
   request.session['patient_id'] = patient_id
   return render(request, 'ermanager/patient_mod.html', {'patient':patient,'form':form})
 
+@login_required(login_url='/auth/login/')
 def big_board(request):
     rooms = Location.objects.order_by('number')
     dict1 = dict()
@@ -94,6 +99,7 @@ class PatientForm(forms.Form):
   nurse_notes = forms.CharField()
   doctor_notes = forms.CharField()
 
+@login_required(login_url='/auth/login/')
 def patient_report(request, patient_id):
  try:
     patient = Patient.objects.get(id=patient_id)
