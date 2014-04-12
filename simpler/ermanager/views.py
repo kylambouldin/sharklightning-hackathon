@@ -39,7 +39,7 @@ def big_board(request):
           person = Patient.objects.get(loc=room)
           dict1[num] = (person.first_name, person.last_name, person.priority)
         except Patient.DoesNotExist:
-          dict1[num] = "Empty"
+          dict1[num] = ("", "", "",)
     template = loader.get_template('ermanager/big_board.html')
     context = RequestContext(request, {
           'dict1':dict1,
